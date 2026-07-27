@@ -1,5 +1,8 @@
 class OutputData
 {
-    public required int QtyRecords { get; set; }
-    
+    public required Status Status { get; set; }
+    public required int QtyRows { get; set; }
+    public required int TotalRows { get; set; }
+    public required List<Dictionary<string, object>> Data { get; set; }
+
 }
