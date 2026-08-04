@@ -29,9 +29,9 @@ class InternalJsonContentParser : IContentParser
     {
         Dictionary<string, object> responce = new Dictionary<string, object>();
 
-        foreach (JsonProperty record in element.EnumerateObject())
+        foreach (JsonProperty keyValuePair in element.EnumerateObject())
         {
-            responce.Add(record.Name, record.Value.Clone()); // trzeba zrobić klon/kopię recordów, bo JsonDocument po zakonczeniu metody Parse() zwalnia swoj bufor i dane znikną
+            responce.Add(keyValuePair.Name, keyValuePair.Value.Clone()); // trzeba zrobić klon/kopię recordów, bo JsonDocument po zakonczeniu metody Parse() zwalnia swoj bufor i dane znikną
         }
         return responce;
     }

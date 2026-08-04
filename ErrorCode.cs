@@ -1,4 +1,4 @@
-enum Errors
+enum ErrorCode
 {
     UnsupportedContentType,
     InvalidBase64,

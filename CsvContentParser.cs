@@ -30,21 +30,21 @@ class CsvContentParser : IContentParser
     {
         bool isQuotationMark = false;
         List<string> fields = new List<string>();
-        string bufor = "";
+        string bufer = "";
 
 
         for (int i = 0; i < line.Length; i++)
         {
-            char aChar = line[i];
+            char oneChar = line[i];
 
-            switch (aChar)
+            switch (oneChar)
             {
                 case '"' when !isQuotationMark:
                     isQuotationMark = true;
                     break;
 
                 case '"' when isQuotationMark && i + 1 < line.Length && line[i + 1] == '"':
-                    bufor += '"';
+                    bufer += '"';
                     i++;
                     break;
 
@@ -53,16 +53,16 @@ class CsvContentParser : IContentParser
                     break;
 
                 case ',' when !isQuotationMark:
-                    fields.Add(bufor);
-                    bufor = "";
+                    fields.Add(bufer);
+                    bufer = "";
                     break;
 
                 default:
-                    bufor += aChar;
+                    bufer += oneChar;
                     break;
             }
         }
-        fields.Add(bufor);
+        fields.Add(bufer);
         return fields;
     }
 
