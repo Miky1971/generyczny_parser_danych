@@ -62,10 +62,11 @@ class CsvContentParser : IContentParser
                     break;
             }
         }
+        fields.Add(bufor);
         return fields;
     }
 
-    private Dictionary<string, object> BuildingOutput(List<string> header, List<string> fields) // 3) 
+    private Dictionary<string, object> BuildingOutput(List<string> header, List<string> fields) // 3) Sklejanie nagłówków z polami 
     {
         Dictionary<string, object> responce = new Dictionary<string, object>();
         for (int i = 0; i < header.Count; i++)
@@ -75,13 +76,3 @@ class CsvContentParser : IContentParser
         return responce;
     }
 }
-
-
-
-
-
-
-
-
-
-
